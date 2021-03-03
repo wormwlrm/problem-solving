@@ -1,26 +1,40 @@
-let fs = require("fs");
+const readline = require("readline");
 
-let [first, ...rest] = fs.readFileSync("/dev/stdin").toString().split("\n");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-let [, man] = first.split(" ").map(Number);
-let times = rest.map(Number);
+let input = [];
 
-let time = [0];
+rl.on("line", function (line) {
+  input.push(line);
+}).on("close", function () {
+  let [first, ...rest] = input;
+  let [, man] = first.split(" ").map(Number);
+  let times = rest.map(Number);
+  let max = Math.max(...times);
 
-let turn = 1;
+  let minTime = 1;
+  let maxTime = max * man;
+  let result = 1;
 
-while (true) {
-  let value = times.reduce((acc, cur) => {
-    return acc + Math.floor(turn / cur);
-  }, 0);
+  while (maxTime <= minTime) {
+    let mid = Math.floor((maxTime + minTime) / 2);
 
-  time.push(value);
+    let value = times.reduce((acc, cur) => {
+      return acc + Math.floor(mid / cur);
+    }, 0);
 
-  if (value >= man) {
-    break;
+    if (value >= man) {
+      maxTime = mid - 1;
+      result = mid;
+    } else {
+      minTime = mid + 1;
+    }
   }
 
-  turn++;
-}
+  console.log(result);
 
-console.log(time.length - 1);
+  process.exit();
+});
