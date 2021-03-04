@@ -1,3 +1,5 @@
+// 이 코드는 통과하지 못함
+
 const readline = require("readline");
 
 const rl = readline.createInterface({
