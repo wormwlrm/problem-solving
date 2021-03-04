@@ -1,4 +1,3 @@
-import sys
 desk, man = map(int, input().split())
 times = [int(input()) for _ in range(desk)]
 
