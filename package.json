@@ -1,0 +1,25 @@
+{
+  "name": "problem-solving",
+  "version": "1.0.0",
+  "description": "![doyak](http://image.zdnet.co.kr/2016/07/21/jh7253_upf4TEQwykMeE.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "solve": "node ./script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wormwlrm/problem-solving.git"
+  },
+  "author": "wormwlrm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wormwlrm/problem-solving/issues"
+  },
+  "homepage": "https://github.com/wormwlrm/problem-solving#readme",
+  "dependencies": {
+    "fs-extra": "^9.1.0"
+  },
+  "devDependencies": {
+    "inquirer": "^8.0.0"
+  }
+}
