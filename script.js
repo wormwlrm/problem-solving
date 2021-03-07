@@ -18,12 +18,9 @@ async function create() {
   fs.copySync("./template", path);
 
   fs.readFile(`${path}/README.md`, "utf8", function (err, data) {
-    console.log("data :>> ", data);
     const formatted = data
       .replace(/\{\{ no \}\}/g, no)
       .replace(/\{\{ name \}\}/g, name);
-
-    console.log("formatted :>> ", formatted);
 
     fs.writeFile(`${path}/README.md`, formatted, "utf8", function (err) {
       if (err) return console.log(err);
