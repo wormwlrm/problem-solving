@@ -1,4 +1,4 @@
-## 피보나치 2
+## 피보나치 수 2
 
 <https://www.acmicpc.net/problem/2748>
 
