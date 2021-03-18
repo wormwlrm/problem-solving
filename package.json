@@ -4,7 +4,8 @@
   "description": "![doyak](http://image.zdnet.co.kr/2016/07/21/jh7253_upf4TEQwykMeE.jpg)",
   "main": "index.js",
   "scripts": {
-    "solve": "node ./script.js"
+    "solve": "node ./script.js",
+    "py": "python ./script.py"
   },
   "repository": {
     "type": "git",
