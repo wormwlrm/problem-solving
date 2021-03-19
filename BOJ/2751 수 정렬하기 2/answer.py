@@ -9,5 +9,5 @@ for i in range(int(ipt())):
 
 arr = sorted(arr)
 
-for i in list(arr:
+for i in list(arr):
     print(i)
