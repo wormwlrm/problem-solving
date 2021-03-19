@@ -1,13 +1,14 @@
-import sys
-ipt = sys.stdin.readline
+n, m = map(int, input().split())
 
-arr = set()
+cards = list(map(int, input().split()))
 
-for i in range(int(ipt())):
-    arr.add(int(ipt()))
+maximum = 0
 
+for i in range(0, n - 2):
+    for j in range(i + 1, n - 1):
+        for k in range(j + 1, n):
+            current = cards[i] + cards[j] + cards[k]
+            if (current > maximum) and (current <= m):
+                maximum = current
 
-arr = sorted(arr)
-
-for i in list(arr:
-    print(i)
+print(maximum)
