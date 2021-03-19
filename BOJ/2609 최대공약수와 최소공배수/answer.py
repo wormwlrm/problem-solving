@@ -8,7 +8,7 @@ def gcd(x, y):
 
 
 def lcm(a, b):
-    return a * b // gcd(a, b)
+    return a * b / gcd(a, b)
 
 
 print(gcd(a, b))
