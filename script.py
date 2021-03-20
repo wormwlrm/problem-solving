@@ -1,13 +1,16 @@
-count = int(input())
+n, k = map(int, input().split())
 
-arr = []
+k = min(k, n - k)
 
-for i in range(count):
-    age, name = input().split()
-    age = int(age)
-    arr.append((age, name, i))
+if (k == 0):
+    print(1)
+else:
 
-arr.sort(key=lambda x: (x[0], x[2]))
+    b = n
+    a = 1
 
-for i in arr:
-    print(str(i[0]) + ' ' + i[1])
+    for i in range(1, k):
+        b = b * (n - i)
+        a = a * (i + 1)
+
+    print(b // a)
