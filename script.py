@@ -1,51 +1,19 @@
-import sys
-from collections import deque
+nodes = {}
+visited = []
+current = {}
+parent = {}
+stack = []
 
-stack = deque([])
+children = list(set(nodes[current] - set(visited)))
 
-count = int(sys.stdin.readline().rstrip())
-
-
-def stack_push(value):
-    stack.append(value)
-
-
-def stack_pop():
-    if (len(stack) == 0):
-        print(-1)
-    else:
-        print(stack.pop())
+for child in children:
+    parent[child] = current
+    stack.append(child)
 
 
-def stack_size():
-    print(len(stack))
+children = list(nodes[current])
 
-
-def stack_empty():
-    if (len(stack) == 0):
-        print(1)
-    else:
-        print(0)
-
-
-def stack_top():
-    if (len(stack) == 0):
-        print(-1)
-    else:
-        print(stack[-1])
-
-
-for i in range(count):
-    row = sys.stdin.readline().rstrip().split()
-    command = row[0]
-
-    if command == 'push':
-        stack_push(row[1])
-    elif command == 'pop':
-        stack_pop()
-    elif command == 'size':
-        stack_size()
-    elif command == 'empty':
-        stack_empty()
-    elif command == 'top':
-        stack_top()
+for child in children:
+    if child not in parent:
+        parent[child] = current
+        stack.append(child)
