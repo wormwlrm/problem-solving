@@ -15,7 +15,7 @@ async function create() {
     type: "input",
     name: "name",
     message: "푼 문제 이름",
-    default: argName.join(),
+    default: argName.join(" "),
   });
 
   const path = `./BOJ/${no} ${name}`;
