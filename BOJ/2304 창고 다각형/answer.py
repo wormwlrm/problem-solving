@@ -30,15 +30,15 @@ visited_right = None
 # 일단 가능한 모든 높이에 대해 반복을 실행해보자
 for height in heights:
     # 왼쪽부터 방문했을 때 height를 넘기는 첫 번째 기둥의 인덱스
-    for index in range(min_left_index, max_right_index):
+    for index in range(min_left_index, max_right_index + 1):
         if polls[index] >= height:
             temp_left = index
             break
 
     # 오른쪽부터 방문했을 때 height를 넘기는 첫 번째 기둥의 인덱스
-    for index in range(min_left_index, max_right_index):
-        if polls[1000 - index] >= height:
-            temp_right = 1000 - index
+    for index in range(max_right_index, min_left_index - 1, -1):
+        if polls[index] >= height:
+            temp_right = index
             break
 
     # 처음에 한해서 같은 높이의 기둥 사이를 가득 채워줌
