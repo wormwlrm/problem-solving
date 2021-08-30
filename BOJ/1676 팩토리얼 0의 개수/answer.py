@@ -6,10 +6,6 @@ N = int(input())
 
 numbers = list(range(1, N + 1))
 
-acc = 1
-
-zero_count = 0
-
 divided_2 = 0
 
 divided_5 = 0
