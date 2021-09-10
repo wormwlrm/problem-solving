@@ -1,12 +1,12 @@
-def permutation(arr, n):
+def permutations(arr, n):
     result = []
 
     if n == 0:
         return [[]]
 
     for index, elem in enumerate(arr):
-        # arr 각 숫자에 대해 재귀로 순열을 추가
-        for perm in permutation(arr[:index:] + arr[index + 1 : :], n - 1):
+        # arr[index::]로 하면 중복 가능
+        for perm in permutations(arr[:index:] + arr[index + 1 : :], n - 1):
             result += [[elem] + perm]
 
     return result
