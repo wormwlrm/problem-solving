@@ -13,3 +13,15 @@ def combinations(arr, M):
             result += [[value] + combo]
 
     return result
+
+
+def combination(N, M):
+    ja = mo = 1
+
+    for i in range(1, M + 1):
+        ja *= N
+        mo *= i
+
+        N -= 1
+
+    return ja // mo
