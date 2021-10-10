@@ -42,17 +42,24 @@ function isHttpAddress(string) {
   return /https\:/.test(string);
 }
 
-function copyTemplate(no, name) {
+function replaceText(data, no, name, encoded = false) {
+  return data
+    .replace(/\{\{ no \}\}/g, encoded ? encodeURI(no) : no)
+    .replace(/\{\{ name \}\}/g, encoded ? encodeURI(name) : name);
+}
+
+function copyTemplate({ no, name } = {}, files = []) {
   const path = `./BOJ/${no} ${name}`;
   fs.copySync("./template", path);
 
-  fs.readFile(`${path}/README.md`, "utf8", function (err, data) {
-    const formatted = data
-      .replace(/\{\{ no \}\}/g, no)
-      .replace(/\{\{ name \}\}/g, name);
+  files.forEach((file) => {
+    fs.readFile(`${path}/${file.name}`, "utf8", function (err, data) {
+      const formatted = replaceText(data, no, name, file.encoded);
+      console.log(formatted);
 
-    fs.writeFile(`${path}/README.md`, formatted, "utf8", function (err) {
-      if (err) return console.log(err);
+      fs.writeFile(`${path}/${file.name}`, formatted, "utf8", function (err) {
+        if (err) return console.log(err);
+      });
     });
   });
 }
@@ -62,7 +69,22 @@ async function create() {
     ? await getAuto()
     : await getManual();
 
-  copyTemplate(no, name);
+  copyTemplate(
+    {
+      no,
+      name,
+    },
+    [
+      {
+        name: "README.md",
+        encoded: false,
+      },
+      {
+        name: "answer.py",
+        encoded: true,
+      },
+    ]
+  );
 }
 
 create();
