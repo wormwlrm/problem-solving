@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "solve": "node ./script.js",
-    "py": "python ./script.py"
+    "py": "python ./script.py",
+    "commit": "node ./commit.js"
   },
   "repository": {
     "type": "git",

@@ -22,7 +22,7 @@ async function getManual() {
   return { no, name };
 }
 
-async function getAuto() {
+async function getAuto(argNoOrAddress) {
   const response = await fetch(argNoOrAddress, {
     method: "get",
   }).then((r) => {
@@ -66,7 +66,7 @@ function copyTemplate({ no, name } = {}, files = []) {
 
 async function create() {
   const { no, name } = isHttpAddress(argNoOrAddress)
-    ? await getAuto()
+    ? await getAuto(argNoOrAddress)
     : await getManual();
 
   copyTemplate(
