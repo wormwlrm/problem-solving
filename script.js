@@ -44,8 +44,8 @@ function isHttpAddress(string) {
 
 function replaceText(data, no, name, encoded = false) {
   return data
-    .replace(/\{\{ no \}\}/g, encoded ? encodeURI(no) : no)
-    .replace(/\{\{ name \}\}/g, encoded ? encodeURI(name) : name);
+    .replace(/\{\{ no \}\}/g, encoded ? encodeURIComponent(no) : no)
+    .replace(/\{\{ name \}\}/g, encoded ? encodeURIComponent(name) : name);
 }
 
 function copyTemplate({ no, name } = {}, files = []) {
